@@ -158,6 +158,8 @@
     <ClCompile Include="MaterialConstants.cpp" />
     <ClCompile Include="RotationService.cpp" />
     <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="stb.cpp" />
+    <ClCompile Include="TorusDrawerService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FogService.h" />
@@ -166,6 +168,8 @@
     <ClInclude Include="MaterialConstants.h" />
     <ClInclude Include="RotationService.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="TorusDrawerService.h" />
+    <ClInclude Include="vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

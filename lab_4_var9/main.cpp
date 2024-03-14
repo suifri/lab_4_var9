@@ -3,10 +3,14 @@
 #include "LightService.h"
 #include "FogService.h"
 #include "RotationService.h"
-
+#include "stb_image.h"
+#include <iostream>
+#include "TorusDrawerService.h"
 
 //намалювати об'єкт, складений із двох переплетених торів, один із яких покритий текстурою дерева.
 //Реалізувати обертання об'єкта навколо горизонтальної осі
+
+GLuint textureID;
 
 void display(void)
 {
@@ -22,15 +26,19 @@ void display(void)
 
 	FogService::drawFog(0.5, 0.5, 0.5);
 
-	glTranslatef(0.0, -1.0, -7.0);
+	glTranslatef(0.0, -1.0, -9.0);
 
 	if (RotationService::getRotationEnabled())
 		glRotatef(RotationService::getRotationAngle(), 1.0, 0.0, 0.0);
 
-	glColor3f(1.0, 0.0, 0.0);
-	//glutSolidTeapot(1.0);
-	glRotatef(30, 1.0, 0.0, 0.0);
+	glPushMatrix();
+	glRotatef(90, 0.0, 1.0, 0.0);
+	glTranslatef(0.0, 1.8, 0.0);
+	glColor3f(0.3, 0.4, 0.2);
 	glutSolidTorus(0.3, 1.0, 50, 50);
+	glPopMatrix();
+	TorusDrawerService service;
+	service.drawTorus(1.0, 0.3, textureID);
 
 	glutSwapBuffers();
 }
@@ -42,7 +50,7 @@ void init(void)
 	Settings::lightInitialSettings();
 	Settings::materialInitialSettings();
 
-	//TODO: add texture loading
+	TorusDrawerService::loadTexture("Texture.jpg", textureID);
 
 	glEnable(GL_NORMALIZE);
 }
