@@ -11,7 +11,7 @@ void FogService::drawFog(const GLfloat r, const GLfloat g, const GLfloat b)
 		glFogi(GL_FOG_MODE, GL_LINEAR);
 	}
 	else
-		glFogi(GL_FOG_DENSITY, 0.2);
+		glFogi(GL_FOG_MODE, GL_EXP);
 
 	glFogf(GL_FOG_DENSITY, 0.2);
 

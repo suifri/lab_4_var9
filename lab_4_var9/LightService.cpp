@@ -5,25 +5,22 @@ GLboolean LightService::isRadialFading = true;
 
 void LightService::radialFading()
 {
-	if (isRadialFading == true)
-	{
 		glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 1.0);
-		glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.05);
-		glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.001);
-	}
+		glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.1);
+		glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.1);
 }
 
 void LightService::updateLights()
 {
-	if (spotlightDirection && LightConstants::getSpotlightPosition() < 0.3 || spotlightDirection == false && LightConstants::getSpotlightPosition() < -0.4)
+	if (spotlightDirection && LightConstants::getSpotlightPosition() < 30 || spotlightDirection == false && LightConstants::getSpotlightPosition() < -30)
 		spotlightDirection = true;
 	else
 		spotlightDirection = false;
 
 	if (spotlightDirection)
-		LightConstants::setNewSpotlightPosition(LightConstants::getSpotlightPosition() + 0.0005f);
+		LightConstants::setNewSpotlightPosition(LightConstants::getSpotlightPosition() + 0.05f);
 	else
-		LightConstants::setNewSpotlightPosition(LightConstants::getSpotlightPosition() - 0.0005f);
+		LightConstants::setNewSpotlightPosition(LightConstants::getSpotlightPosition() - 0.05f);
 
 	glPushMatrix();
 	glLightfv(GL_LIGHT1, GL_POSITION, LightConstants::spotlightPosition);

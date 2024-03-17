@@ -34,7 +34,7 @@ void display(void)
 	glPushMatrix();
 	glRotatef(90, 0.0, 1.0, 0.0);
 	glTranslatef(0.0, 1.8, 0.0);
-	glColor3f(0.3, 0.4, 0.2);
+	glColor3f(0.3, 0.3, 0.3);
 	glutSolidTorus(0.3, 1.0, 50, 50);
 	glPopMatrix();
 	TorusDrawerService service;
@@ -67,7 +67,7 @@ void reshape(const GLint width, const GLint height)
 
 void idle()
 {
-	RotationService::setRotationAngle(RotationService::getRotationAngle() + 0.02f);
+	RotationService::setRotationAngle(RotationService::getRotationAngle() + 0.05f);
 
 	if (RotationService::getRotationAngle() > 360.0f)
 		RotationService::setRotationAngle(RotationService::getRotationAngle() - 360.0f);
@@ -86,10 +86,10 @@ void keyboard(unsigned char key, GLint x, GLint y)
 			glEnable(GL_FOG);
 		break;
 	case 'r':
-		LightService::setRadialFading(~LightService::getRadialFading());
+		LightService::setRadialFading(!LightService::getRadialFading());
 		break;
 	case 'y':
-		FogService::setFogType(~FogService::getFogType());
+		FogService::setFogType(!FogService::getFogType());
 		break;
 	case 'a':
 		if (glIsEnabled(GL_LIGHT0))
@@ -101,13 +101,19 @@ void keyboard(unsigned char key, GLint x, GLint y)
 		if (glIsEnabled(GL_LIGHT1))
 			glDisable(GL_LIGHT1);
 		else
-			glDisable(GL_LIGHT1);
+			glEnable(GL_LIGHT1);
 		break;
 	case 'd':
 		if (glIsEnabled(GL_LIGHT2))
 			glDisable(GL_LIGHT2);
 		else
 			glEnable(GL_LIGHT2);
+		break;
+	case 't':
+		if (glIsEnabled(GL_LIGHT3))
+			glDisable(GL_LIGHT3);
+		else
+			glEnable(GL_LIGHT3);
 		break;
 	default:
 		break;

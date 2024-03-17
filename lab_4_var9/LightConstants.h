@@ -12,7 +12,7 @@ public:
 	static const GLfloat lightDiffuse[membersSize];
 
 	static GLfloat spotlightPosition[membersSize];
-	static const GLfloat spotlightDirection[membersSize];
+	static const GLfloat spotlightDirection[3];
 	static const GLfloat spotlightAmbient[membersSize];
 	static const GLfloat spotlightDiffuse[membersSize];
 	static const GLfloat spotlightCutoff;
@@ -21,6 +21,14 @@ public:
 	static const GLfloat distantLightDirection[membersSize];
 	static const GLfloat distantLightAmbient[membersSize];
 	static const GLfloat distantLightDiffuse[membersSize];
+
+	static const GLfloat pointLightPosition[membersSize];
+	static const GLfloat pointLightAmbient[membersSize];
+	static const GLfloat pointLightDiffuse[membersSize];
+	static const GLfloat pointLightSpecular[membersSize];
+	static const GLfloat lightConstantAttenuation;
+	static const GLfloat lightLinearAttenuation;
+	static const GLfloat lightQuadraticAttenuation;
 
 	static void setNewSpotlightPosition(const GLfloat value);
 	static GLfloat getSpotlightPosition();
