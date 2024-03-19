@@ -22,6 +22,11 @@ void LightService::updateLights()
 	else
 		LightConstants::setNewSpotlightPosition(LightConstants::getSpotlightPosition() - 0.05f);
 
+	//if (LightConstants::lightPosition[1] <= -15)
+	//	LightConstants::lightPosition[1] += 0.05;
+	//else
+	//	LightConstants::lightPosition[1] -= 0.05;
+
 	glPushMatrix();
 	glLightfv(GL_LIGHT1, GL_POSITION, LightConstants::spotlightPosition);
 	glPopMatrix();
